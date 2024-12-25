@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AJAX</title>
+    <style>
+        div{
+            border: solid 1pt red;
+            width: 500px;
+            height: 150px;
+            padding: 10px;
+            margin: 10px;
+        }
+    </style>
+    <script src="./jquery-3.7.1.min.js"></script>
+</head>
+<body>
+    <h1>AJAX , JQuery , JSON</h1>
+    <h2>AJAX without jQuery</h2>
+    <button onclick="loadContent()">Change Content-Type</button>
+    <div id="divAjax"></div>
+    <script>
+        function loadContent(){
+            var xhr = new XMLHttpRequest();
+            xhr.onreadystatechange = function(){
+                if (this.readyState == 4 && this.status == 200) {
+                    document.getElementById("divAjax").innerHTML = this.responseText;
+                }
+            };
+            xhr.open("GET" , "about.txt" , true);
+            xhr.send();
+        }
+    </script>
+
+    <h2>Load text file using AJAX with jQuery</h2>
+    <button id="btnLoad">Load content</button>
+    <div id="loadjqText"></div>
+    <script>
+        $("#btnLoad").click(function(){
+            $.ajax({url:"about.txt" , success:function(result){
+                $("#loadjqText").html(result);
+            }});
+        });
+    </script>
+
+    <h2>Get JSON in jQuery</h2>
+    <button id="btngetJSON">GET Json content</button>
+    <div id="studentInfo"></div>
+
+    <script>
+        $("#btngetJSON").click(function(){
+            $.getJSON("lab.json" , function(result){
+                $("#studentInfo").html(result.sname);
+                $("#studentInfo").append("<br> Name : "+result.USN);
+                $("#studentInfo").append("<br> Department : "+result.dept);
+            });
+        });
+    </script>
+
+<h2>Parse Json in Jquery</h2>
+<button id="btnparseJSON">Parse Json</button>
+<div id="courseInfo"></div>
+
+<script>
+    $("#btnparseJSON").click(function(){
+        let txt = '{"name" : "weblab" , "code":"BCSL504"}'
+        let obj = jQuery.parseJSON(txt);
+        $("#courseInfo").html("Name : "+obj.name);
+        $("#courseInfo").html("<br> Code : "+obj.code);
+    })
+</script>
+
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="./jquery-3.7.1.min.js"></script>
+    <script src="./jquery.animate-colors.js"></script>
+    <title></title>
+</head>
+<body>
+    <h1>JQuery</h1>
+    <h2>Append content to the end of paragraph and list</h2>
+    <button id="btnAppend" >Append Demo</button>
+    <p id="aboutjq">Jquery dates back to 2005</p>
+    <ul id="featuresjq">
+        <li>HTML/DOM Manipulation</li>
+        <li>CSS Manipulation</li>
+    </ul>
+    <script>
+        $("#btnAppend").click(function(){
+            $("#aboutjq").append(" <br> various features are : ");
+            $("#featuresjq").append("<li> HTML manipulation </li>");
+        });
+    </script>
+    <h2>Change the state if CSS style element</h2>
+    <button id="btnGrow">Animate Text - Increase Size</button>
+    <button id="btnShrink">Animate Text - Decrease size</button>
+    <div id="animText">jQuery</div>
+    <script>
+        $("#btnGrow").click(function(){
+            $("#animText").animate({
+                "opacity":0.25,
+                "fontSize":"+=4px"
+            })
+        });
+        $("#btnShrink").click(function(){
+            $("#animText").animate({
+                "opacity":1,
+                "fontSize":"-=4px"
+            })
+        });
+    </script>
+    <h2>Change the color of any div that is animated</h2>
+    <input type="color" id="ipColor">
+    <button id="btnColor">Change Color</button>
+    <div id="foo" style="width: 200px; height: 150px; border: solid 1pt black;" ></div>
+    <script>
+        $("#btnColor").click(function(){
+            $("#foo").animate({ backgroundColor:$("#ipColor").val()} , 'slow');
+        });
+    </script>
+</body>
+</html>

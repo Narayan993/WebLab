@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width>, initial-scale=1.0">
+    <title>JS, JSON, CSV</title>
+    <style>
+       div {width:600px;
+        height:150px; 
+        border:solid 1pt burlywood; 
+        padding: 15px;
+        margin:10px;
+       }
+    </style>
+</head>
+<body>
+   
+    <h1>JS, JSON, CSV</h1>
+    <h2>Converting JSON to Javascript Object </h2>
+    <div id="jsonToJS"></div>
+    <script>
+        var text = '{"course":{"code":"BCSL504","cname":"Web Tech Lab" , "Experiment":"json to JS"}}';
+        var a = JSON.parse(text);
+        document.getElementById("jsonToJS").innerHTML=a.course.code;
+        document.getElementById("jsonToJS").innerHTML+="<br>"+a.course.cname;
+        // document.getElementById("jsonToJS").innerHTML+="<br>"+a.course.Experiment;
+    </script>
+
+    <h2>Converting JSON to Javascript Date </h2>
+    <div id="jsonDate"></div>
+
+    <script>
+        var text='{"cname":"Web Tech Lab","start_date":"2001-9-11","end_date":"2024-12-26"}';
+        var c = JSON.parse(text);
+        c.start_date = new Date(c.start_date);
+        c.end_date = new Date(c.end_date);
+        var options = { year: '2-digit', month: 'numeric', day: '2-digit' };
+        document.getElementById("jsonDate").innerHTML=c.start_date.toLocaleDateString("en-gb",options);
+        document.getElementById("jsonDate").innerHTML+="<br>"+c.end_date.toLocaleDateString("en-gb",options);
+    </script>
+
+    <h2>Converting JSON to CSV</h2>
+    <button onclick="jsonToCSV()" >Convert JSON TO CSV </button>
+    <button onclick="CSVtojson()" disabled id="btnCsvToJson"> Convert CSV to JSON</button>
+    <div id="jsonCSV"></div>
+    <script>
+            function jsonToCSV  (){
+        var jsonData=[{
+            "id":1,
+            "usn":"1CR22CS141",
+            "sname":"Sagar",
+            "semester":5,
+            "dept":"CSE"
+        },
+        {"id":2,
+        "usn":"1CR22CS133",
+        "sname":"Pratyush",
+        "semester":5,
+        "dept":"CSE"
+    }
+    ];
+        let csv='';
+        const headers = Object.keys(jsonData[0]);
+        csv+=headers.join()+"\n";
+
+        jsonData.forEach(obj => {
+            const values = headers.map(header =>obj[header]);
+            csv+=values.join() +"\n";
+        });
+        document.getElementById("jsonCSV").innerHTML=csv;
+        document.getElementById("btnCsvToJson").disabled = false;
+
+    }
+    function CSVtojson  (){
+        csv =  document.getElementById("jsonCSV").innerHTML.trim();
+        const rows = csv.split("\n");
+        const headers = rows[0].split(",");
+        const jsonData=[];
+        for(let i=1;i<rows.length;i++){
+            const values=rows[i].split(",");
+            const obj={};
+            for(let j=0; j<headers.length;j++ ){
+                const key = headers[j];
+                const value=values[j];
+                obj[key]=value;
+            }
+            
+            jsonData.push(obj);
+        }
+        document.getElementById("jsonCSV").innerHTML=JSON.stringify(jsonData);
+        document.getElementById("btnCsvToJson").disabled = true;
+    }
+    </script>
+
+    <h2>Generating hash using Crypto</h2>
+ 
+    <label for="ipStr">Enter a string to hash: </label>
+    <input type="text" id="ipStr"  /><br>
+    <button onclick="hash()">Generate Hash</button><br>
+    <div id="taHash"></div>
+
+
+    <script>
+        
+
+        
+
+       
+
+
+
+    function hash(){
+        const a = document.getElementById("ipStr").value;
+       let hash=0;
+       for(i=0;i<a.length;i++){
+        char = a.charCodeAt(i)
+        hash=((hash<<5) - hash) + char;
+        hash=hash&hash;
+       }
+       document.getElementById("taHash").innerHTML=hash;    
+    }
+    </script>
+</body>
+</html>

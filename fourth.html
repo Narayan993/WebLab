@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forms</title>
+    <link rel="stylesheet" href="forms.css">
+</head>
+<body>
+    <div id="container">
+        <h1>Registration form for Student club</h1>
+        <form action="" enctype="multipart/form-data" method="post">
+                <fieldset>
+                    <table>
+                        <legend>Personal details</legend>
+                    <tr>
+                        <td><label for="usn">USN</label></td>
+                        <td><input type="text" id="usn"></td>
+                    </tr>
+                    <tr>
+                        <td><label for="name" >NAME</label></td>
+                        <td><input type="text" id="name" required></td>
+                    </tr>
+                    <tr>
+                        <td><label for="dob">Date of birth</label></td>
+                        <td><input type="date" id="dob" required></td>
+                    </tr>
+                    <tr>
+                        <td><label for="email">Email</label></td>
+                        <td><input type="email" name="email" id="" required></td>
+                    </tr>
+                    <tr>
+                        <td><label for="Password">Password</label></td>
+                        <td><input type="password" name="password" id=""></td>
+                    </tr>
+                    <tr>
+                        <td><label for="Phone number">Phone Number</label></td>
+                        <td><input type="tel" name="Phone number" id="" required></td>
+                    </tr>
+                    </table>
+                </fieldset>
+                <fieldset>
+                    <table>
+                        <legend>Club details</legend>
+                    <tr>
+                        <td><label for="club">CLUB details</label></td>
+                        <td>
+                            <select id="club" name="club">
+                            <optgroup label="college">
+                                <option>ACE</option>
+                                <option>iris</option>
+                                <option>geeks for geeks</option>
+                                <option>yet an another lame time wast club</option>
+                            </optgroup>
+                            </select>
+                            <select name="club" id="club">
+                                <optgroup label="CSE">
+                                    <option>time waste club 1</option>
+                                    <option>time waste club 2</option>
+                                    <option>time waste club returns</option>
+                                    <option>time waste group away from home</option>
+                                </optgroup>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label for="batch">Batch</label>
+                            <br>
+                            <input type="radio" name="batch" id=""> 2022-23<br>
+                            <input type="radio" name="batch" id=""> 2022-23<br>
+                            <input type="radio" name="batch" id=""> 2022-23<br>
+                            <input type="radio" name="batch" id=""> 2022-23 <br>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label for="Skills">Roles</label>
+                            <br>
+                            <input type="radio" name="batch" id=""> Technical<br>
+                            <input type="radio" name="batch" id=""> Marketing<br>
+                            <input type="radio" name="batch" id=""> Design<br>
+                            <input type="radio" name="batch" id=""> Organizing <br>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label for="skills">Skills</label>
+                            <br>
+                            <input type="checkbox" name="skills" id="" value="photography"> Photography <br>
+                            <input type="checkbox" name="skills" id="" value="video editing"> Video Editing <br>
+                            <input type="checkbox" name="skills" id="" value="photography"> Programming <br>
+                            <input type="checkbox" name="skills" id="" value="Graphic"> Graphic and poster Designing <br>
+                        </td>
+                    </tr>
+                    </table>
+                </fieldset>
+                <fieldset>
+                    <legend>Other Details of Candidate</legend>
+                    <table>
+                        <tr>
+                            <td><label for="cgpa">CGPA</label></td>
+                            <td><input type="range" name="range" list="values" id=""></td>
+                            <td>
+                                <datalist id="values">
+                                    <option value="5.0" label="5.0">5.0-6.0</option>
+                                    <option value="6.1 - 7.0" label="6.1 - 7.0">6.1 - 7.0</option>
+                                    <option value="7.1 - 8.0" label="7.1 - 8.0">7.1 - 8.0</option>
+                                    <option value="8+" label="8+">8+</option>
+                                </datalist>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><label for="suggestions">Any suggestions</label></td>
+                            <td><textarea name="suggestions" id=""></textarea></td>
+                        </tr>
+                    </table>
+                </fieldset>
+                <fieldset>
+                    <table>
+                        <tr>
+                            <td><input type="reset" value="Reset"></td>
+                            <td><input type="submit" value="Submit"></td>
+                        </tr>
+                    </table>
+                </fieldset>
+                
+        </form>
+    </div>
+</body>
+<FOOter>
+    R Sagar 1CR22CS141
+</FOOter>
+</html>
+
+
+css
+
+body{
+}
+
+#container{
+    background-color: #cffffb;
+    width: 95%;
+    height: 80%;
+    margin: auto;
+}
+
+h1{
+    color: burlywood;
+}
+
+form{
+    background-color: aliceblue;
+    margin: 5px;
+    padding: 5px;
+}
+
+td{
+    margin: 5px;
+    padding: 5px;
+}
+
+input[type = text] , input[type = email] , input[type = password]  , input[type = tel]{
+    background-color: azure;
+    border-radius: 5px;
+    border-color: orange;
+    height: 1.5em;
+}
+
+optgroup{
+    border-radius: 10px;
+    border-style: solid;
+    border-color: rgb(223, 206, 174);
+}
+
+textarea{
+    background-color: azure;
+    border-radius: 10px;
+    border-style: solid;
+    height: 100px;
+    width: 200px;
+}
+
+select{
+    width: 200px;
+    background-color: rgb(212, 198, 170);
+
+}
+input[type=radio] , input[type=checkbox]{
+    border-style: solid;
+    border-color: orange;
+
+}
+
+input[type=reset] , input[type=submit]{
+    width: 120px;
+    height: 50px;
+    background-color: green;
+}
+
+legend{
+    text-size-adjust: 30px;
+    color: #d91825;
+    font-weight: bolder;
+    font-family: monospace;
+}

@@ -1,0 +1,124 @@
+visitor.php
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visitors Count</title>
+</head>
+<body>
+   <h1>Welcome to my page </h1>
+
+   <hr>
+   <footer>
+    <?php
+ $counter_name = "count.txt";
+
+ $f = fopen($counter_name,"r");
+ $counterVal = fread($f, filesize($counter_name));
+ fclose($f);
+ 
+ $counterVal++;
+ $f = fopen($counter_name, "w");
+ fwrite($f, $counterVal);
+ fclose($f); 
+    ?>
+    <em>No. of visitors : <?php echo $counterVal; ?></em>
+</footer>
+    
+</body>
+</html>
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>STUDENTS</title>
+</head>
+<style>
+    table , th , td {
+        border: solid 1pt black ;
+        border-collapse: collapse;
+    }
+    th{
+        background-color: grey;
+        width: 200px;
+        height: 50px;
+    }
+    td{
+        width: 100px;
+        height: 50px;
+        align-items: center;
+    }
+</style>
+
+<body>
+    <?php
+    define('HOST', 'localhost');
+    define('UNAME', 'root');
+    define('PSWD', '');
+    define('DB', 'studentDB');
+    $con = mysqli_connect(HOST, UNAME, PSWD, DB);
+    if (mysqli_connect_errno()) {
+        echo "Failed to connect to MySQL: " . mysqli_connect_error();
+    }
+    $query = mysqli_query($con , "select * from students");
+    $results = mysqli_fetch_all($query,MYSQLI_ASSOC);
+    ?>
+    <h1>Students record</h1>
+    <h2>before sorting</h2>
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>USN</th>
+            <th>NAME</th>
+            <th>DEPT</th>
+        </tr>
+        <tr>
+            <?php for ($i=0; $i < sizeof($results); $i++) { 
+                ?>
+                <tr>
+                    <td> <?php echo $results[$i]["ID"];?> </td>
+                    <td> <?php echo $results[$i]["USN"];?> </td>
+                    <td> <?php echo $results[$i]["Sname"];?> </td>
+                    <td> <?php echo $results[$i]["Dept"];?> </td>
+                </tr>
+            <?php } ?>
+        </tr>
+    </table>
+    <h2>after sorting</h2>
+    <?php 
+    for ($i=0; $i < sizeof($results); $i++) { 
+        $min = $i;
+        for ($j=$i+1; $j < sizeof($results); $j++) { 
+            if($results[$j]["USN"] < $results[$i]["USN"])
+            $min = $j;
+        }
+        $temp = $results[$i];
+        $results[$i] = $results[$min];
+        $results[$min] = $temp;
+    }?>
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>USN</th>
+            <th>NAME</th>
+            <th>DEPT</th>
+        </tr>
+        <tr>
+            <?php for ($i=0; $i < sizeof($results); $i++) { 
+                ?>
+                <tr>
+                    <td> <?php echo $results[$i]["ID"];?> </td>
+                    <td> <?php echo $results[$i]["USN"];?> </td>
+                    <td> <?php echo $results[$i]["Sname"];?> </td>
+                    <td> <?php echo $results[$i]["Dept"];?> </td>
+                </tr>
+            <?php } ?>
+        </tr>
+    </table>
+</body>
+
+</html>

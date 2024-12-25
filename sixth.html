@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <link rel="stylesheet" href="calstyle.css">
+</head>
+<body>
+    <div id="container" >
+        <h2>JS Calculator</h2>
+        <form name="calc_form" action="" method="post">        
+        <input type="text" name="answer" id="answer">
+        <input type="button" value="C" onclick="calc_form.answer.value='' "><br>
+
+        <input type="button" value="1" onclick="calc_form.answer.value+= 1">
+        <input type="button" value="2" onclick="calc_form.answer.value+= 2">
+        <input type="button" value="3" onclick="calc_form.answer.value+= 3">
+        <input type="button" value="+" onclick="calc_form.answer.value+= '+'"><br>
+        <input type="button" value="4" onclick="calc_form.answer.value+= 4">
+        <input type="button" value="5" onclick="calc_form.answer.value+= 5">
+        <input type="button" value="6" onclick="calc_form.answer.value+= 6">
+        <input type="button" value="-" onclick="calc_form.answer.value+= '-' "><br>
+        <input type="button" value="7" onclick="calc_form.answer.value+= 7">
+        <input type="button" value="8" onclick="calc_form.answer.value+= 8">
+        <input type="button" value="9" onclick="calc_form.answer.value+= 9">
+        <input type="button" value="*" onclick="calc_form.answer.value+= '*' "><br>
+        <input type="button" value="/" onclick="calc_form.answer.value+= '/' ">
+        <input type="button" value="0" onclick="calc_form.answer.value+= 0">
+        <input type="button" value="." onclick="calc_form.answer.value+= '.' ">
+        <input type="button" value="%" onclick="calc_form.answer.value+= '%' "><br>
+
+        <input type="button" value="x2" onclick= "squarenumber()">
+        <input type="button" value="√" onclick="squareroot()">
+        <input type="button" value="^" onclick="calc_form.answer.value+= '^' ">
+        <input type="button" value="=" onclick="calc_form.answer.value= eval(calc_form.answer.value) ">
+    </form>
+</div>
+    
+
+</body>
+<footer>
+    R Sagar | Dept. of Computer Science and engineering | November 4th 2024
+</footer>
+<script>
+    function squarenumber(){
+    let value = calc_form.answer.value;
+    calc_form.answer.value = Math.pow(value , 2);
+}
+function squareroot(){
+    let value = calc_form.answer.value;
+    if(value>0){
+        calc_form.answer.value = Math.sqrt(value)
+    }
+    else{
+        calc_form.answer.value = "ERROR";
+    }
+}
+</script>
+</html>
+
+css----
+
+body{
+    background-color: azure;
+    align-items: center;
+}
+
+#container{
+    width: 80%;
+    height: 500px;
+    border: solid black 1px;
+    justify-content: center;
+    margin: auto;
+    padding: 5px;
+}
+
+input{
+    margin: 5px;
+    font-size: 10pt;
+}
+
+input[type = text]{
+    width: 275px;
+    height: 50px;
+    border: inset 2pt #000000;
+    background-color: #afd3db;
+    
+}
+
+input[type = button]{
+    height: 50px;
+    width: 85px;
+    border: inset 3pt black;
+    background-color: #879aa1;
+    border-radius: 5px;
+}
+
+form{
+    width: 400px;
+    margin: auto;
+    padding: 5px;
+    align-self: center;
+    border: outset;
+    height: fit-content;
+    background-color: #58acbf;
+}
+
+h2{
+    text-align: center;
+    color: cadetblue;
+    font-weight: bold;
+}
+footer{
+    text-align: center;
+    color: #2e626e;
+    font-size: 20px;
+    font-weight: bolder;
+}
